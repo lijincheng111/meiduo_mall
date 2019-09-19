@@ -28,8 +28,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
+import os,sys
+
+# sys.path.insert(0,'/home/python/Desktop/meiduo_project/meiduo/meiduo_mall/apps')
+sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
+print(sys.path)
+
+# Application definition
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users'
+    'contents'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -66,7 +73,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
             ],
-            'environment': 'utils.jinja2_env.jinja2_environment',
+            'environment': 'meiduo_mall.utils.jinja2_env.jinja2_environment',
         },
     },
 ]
@@ -103,11 +110,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
-import os,sys
 
-# sys.path.insert(0,'/home/python/Desktop/meiduo_project/meiduo/meiduo_mall/apps')
-sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
-print(sys.path)
 
 
 
@@ -175,3 +178,5 @@ STATIC_URL = '/static/'
 
 # 配置静态文件加载路径
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+AUTH_USER_MODEL='users.User'
